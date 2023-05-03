@@ -1,9 +1,9 @@
-%%Function to 
+%%Funktion zum loesen eines beschraenkten linearen Ausgleichproblems
 
-% Input:    - A   :   
-%           - a   :   
-%           - C   :   
-%           - c   :   
+% Input:    - A   :   gegebene mxn Matrix
+%           - a   :   loesungsvektor von A mit Ax = a
+%           - C   :   beschraenkende ixj Matrix
+%           - c   :   loesungsvektor von C mit Cx = c
 
 % Output:   - x   :   Loesungsvektor
 
