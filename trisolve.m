@@ -25,12 +25,12 @@ l = min(m,n);
 % Dimension hat:
 if (m == n) && (length(b)~= m)
     error('Die Dimensionen von A und b stimmen nicht ueberein.') 
-end
+endif
 
 if (m==1) && (n == 1)
    x = b/A;
    return;
-end
+endif
 
 % Setze rechte Seite
 x = b(1:l);
@@ -38,23 +38,23 @@ x = b(1:l);
 if (lower)
     if (m > n)
     error('Das LGS ist überbestimmt.')
-    end
+    endif
     for i = 1 : m
         for j = 1 : (i-1)
             x(i) = x(i) - A(i,j) * x(j); 
-        end
+        endfor
         x(i) = x(i) / A(i,i); 
-    end
+    endfor
 else % upper
     if (m < n)
     error('Das LGS ist unterbestimmt.')
-    end
+    endif
     for i = n : -1 : 1
         for j = n : -1 : (i+1) 
             x(i) = x(i) - A(i,j) * x(j); 
-        end
+        endfor
         x(i) = x(i) / A(i,i); 
-    end
-end
+    endfor
+endif
 
 end

@@ -29,7 +29,7 @@ c1 = [3, 6];
 x1 = solve_LAP(A1, a1, C1, c1)
 
 %Loesen der Uebungsaufgabe 2.5
-A2 = [2*sqrt(2), 6*sqrt(2), -3*sqrt(2)/2; 4, 6, 5/2; 6, 6, 5/2];
+A2 = [2*sqrt(2), 6*sqrt(2), -1.5*sqrt(2); 4, 6, 2.5; 6, 6, 2.5];
 a2 = [12, 12, 9];
 C2 = [0, 1, -1];
 c2 = [1];

@@ -18,26 +18,34 @@ function [A, tau] = qr_Householder(A)
   
   for k=1:n
     
-    x = zeros(m,1);
-    x(k:m,1) = A(k:end,k);
+    x = A(k:end,k);
+    nor = norm(x,2);
+    x1 = x(1);
     
-    nor = norm(x);
-    s = x(k) + sign(x(k))*nor;
-    
-    e = zeros(m,1);
-    e(k) = 1;
-    
-    v = zeros(m,1);
-    
-    v = (x .+ sign(x(k))*nor * e ) / s;
-    
-    tau(k) = abs(s) / nor;
-    
-    u = transpose(v)*A;  %u ist ein zeilenvektor
-    
-    A = A - tau(k)*v*u;  %keine Matrix-Matrix-Mult.
-    
-    A(k+1:end, k) = v(k+1:end);
-    
+    if nor == abs(x1)
+      tau(k,1) = 0;
+      continue
+    else
+
+      e = zeros(m-k+1,1);
+      e(1) = 1;
+
+      if x1 == 0
+        c = nor;
+      else
+        c=sign(x1)*nor;
+      endif
+
+      s = x(1) + c;
+      
+      v = (x + ( c * e ) ) / s;
+      
+      tau(k,1) = abs(s) / nor;
+      
+      A(k:end, k:n) = A(k:end, k:n) - tau(k,1) * v * (v'*(A(k:end,k:n)));
+      
+      A(k+1:end, k) = v(2:end,:);
+    endif
+      
   endfor
 endfunction
