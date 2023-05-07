@@ -54,6 +54,6 @@ function x = solve_LAP( A, a, C, c)
   x_a = trisolve(0, Qa_R, a);
   
   % Transformation auf x: x = Qc * (x_1 x2)'
-    x = mult_Q(Qc_R, tau_c, [x_1, x_a]');
+  x = mult_Q(Qc_R, tau_c, [x_1, x_a]');
   
 endfunction
