@@ -12,8 +12,24 @@
 %
 function [x, norm_dx, iter] = GGN_method(Fa, Fc, x0, tol, kmax)
     
+    x = x0;
 
     for iter = 1:kmax
+        %Evaluierung der 2-Norm von x0
+        norm_dx = norm(x, 2);
+        
+        %Abbrechen, wenn die 2-Norm von x0 kleiner als die Fehlertoleranz wird
+        if(norm_dx < tol)
+            return;
+        endif
+
+        %Evaluierung der Funktionen und derer Ableitung an der Stelle x^k
+        [f_a, J_a] = [Fa(x), jacobian(Fa, x)(x)];
+        f_c = feval(Fc,x);
+        J_c = feval(jacobian(Fc, [x,y]),x);
+
+        %Loesen des linearisierten Problems LAP(x^k) um x^k+1 auszurechnen 
+        x = solve_LAP((f_a+J_a), x, (f_c+J_c), x);
 
     endfor
 
