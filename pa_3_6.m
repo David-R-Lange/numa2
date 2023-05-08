@@ -5,7 +5,7 @@
 %   3.  Kilian Hartmann, 10031802
 %
 % Programmiersprache: Octave
-% Version:            version 6.4
+% Version:            version 7.1.0
 %
 % Liste der eingesendeten Dateien:
 %   1.  mult_QT.m
@@ -14,11 +14,13 @@
 %   4.  trisolve.m
 %   5.  solve_LAP.m
 %   6.  GGN_method.m
-%   
-%   
+%
+%
 % Housekeeping
 clc;
 clear;
+
+
 
 %Fehlertoleranz soll aehnlich zur Maschinengenauigkeit sein
 tol = 1e-6;
@@ -32,9 +34,9 @@ kmax = 1000;
 x0 = [0,2]';
 
 func_a = @(x) [ x(1).*x(2) ; x(1).+x(2)];
-func_c = @(x) (x(1).^2 + x(2).^2 - 4);
+func_c = @(x,y) (x.^2 + y.^2 - 4);
 
-GGN_method(@func_a, @func_c, x0, tol, kmax)
+[x, norm_dx, iter] = GGN_method(func_a, func_c, x0, tol, kmax)
 
 
 # %Loesen des Problems von UB 3.4.a

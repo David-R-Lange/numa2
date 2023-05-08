@@ -20,7 +20,8 @@ function x = solve_LAP( A, a, C, c)
   [Qc_R, tau_c] = qr_Householder(C);
   
   % Bestimme Loesungskomponente x_1 mit R (inklusive trafo von x)
-  x_1 = trisolve(0, Qc_R, c);
+  Qc = triu(Qc_R(1:nc,:));
+  x_1 = trisolve(1, Qc', c)';
    
   % Transformation von A mit [A1 A2] = AQc
   
@@ -51,7 +52,7 @@ function x = solve_LAP( A, a, C, c)
   a = mult_QT(Qa_R, tau_a, a_0);
   
   % Bestimme Loesungskomponente x_a: R_1*x_a = a_1
-  x_a = trisolve(0, Qa_R, a);
+  x_a = trisolve(1, Qa_R', a);
   
   % Transformation auf x: x = Qc * (x_1 x2)'
   x = mult_Q(Qc_R, tau_c, [x_1, x_a]');
