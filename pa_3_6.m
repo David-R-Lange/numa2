@@ -5,7 +5,7 @@
 %   3.  Kilian Hartmann, 10031802
 %
 % Programmiersprache: Octave
-% Version:            version 7.1.0
+% Version:            version 6.4.0-2
 %
 % Liste der eingesendeten Dateien:
 %   1.  mult_QT.m
@@ -20,36 +20,40 @@
 clc;
 clear;
 
+try
+    %Fehlertoleranz soll aehnlich zur Maschinengenauigkeit sein
+    tol = 1e-6;
+
+    %Die maximale Anzahl der Iterationen soll passend hoch sein
+    kmax = 1000;
+
+    %Loesen des Problems von UB 3.3
 
 
-%Fehlertoleranz soll aehnlich zur Maschinengenauigkeit sein
-tol = 1e-6;
+    x0 = [0,2]';
 
-%Die maximale Anzahl der Iterationen soll passend hoch sein
-kmax = 1000;
+    func_a = @(x) [ x(1).*x(2) ; x(1).+x(2)];
+    func_c = @(x,y) (x.^2 + y.^2 - 4);
 
-%Loesen des Problems von UB 3.3
-
-
-x0 = [0,2]';
-
-func_a = @(x) [ x(1).*x(2) ; x(1).+x(2)];
-func_c = @(x,y) (x.^2 + y.^2 - 4);
-
-[x, norm_dx, iter] = GGN_method(func_a, func_c, x0, tol, kmax)
+    [x, norm_dx, iter] = GGN_method(func_a, func_c, x0, tol, kmax)
 
 
-# %Loesen des Problems von UB 3.4.a
+    # %Loesen des Problems von UB 3.4.a
 
 
-# x0 = 0; %TODO change
+    # x0 = 0; %TODO change
 
-# GGN_method(@func_a, @func_c, x0, tol, kmax)
-
-
-# %Loesen des Problems von UB 3.4.b
+    # GGN_method(@func_a, @func_c, x0, tol, kmax)
 
 
-# x0 = [0.5, 1.5]';
+    # %Loesen des Problems von UB 3.4.b
 
-# GGN_method(@func_a, @func_c, x0, tol, kmax)
+
+    # x0 = [0.5, 1.5]';
+
+    # GGN_method(@func_a, @func_c, x0, tol, kmax)
+
+catch err
+    fprintf("Fehler")
+end_try_catch
+
