@@ -8,14 +8,15 @@
 % Version:            version 6.4.0-2
 %
 % Liste der eingesendeten Dateien:
-%   1.  
+%   1.  power_method.m
+%   2.  inv_power_method.m
 %
 %
 % Housekeeping
 clc;
 clear;
 
-%Loesen des Skripts
+% Anfang des Skriptes
 
 A = [4,1,1,1;0,2,0,0;0,0,6-3*i,0;0,0,0,42];
 
@@ -35,7 +36,7 @@ fprintf('Loesung der Inversen Vektoriteration von Aufgabe c.i \n')
 
 %Loesen des Problems (ii)
 
-fprintf("/n/n/n")
+fprintf("\n\n\n")
 
 x_2 = [1, 2, 1, 0]';
 sigma_2 = 1.9;
@@ -48,7 +49,7 @@ fprintf('Loesung der Inversen Vektoriteration von Aufgabe c.ii \n')
 
 %Loesen des Problems (iii)
 
-fprintf("/n/n/n")
+fprintf("\n\n\n")
 
 x_3 = [1, 2, 0, 0]';
 sigma_3 = 4.1;

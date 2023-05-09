@@ -1,10 +1,12 @@
-%%Funktion 
+%%Funktion zum berechnen des betragkleinsten Eigenwertes und zug. Eigenvektor
 %
-% Input:    -   A       :   
-%           -   
+% Input:    -   A       :   nxn Matrix 
+%           -   x0      :   Startvektor x(0)
+%           -   tol     :   Fehlertoleranz und Abbruchkriterium
+%           -   max_iter:   Maximale # an Iterationen
 %
-% Output:   -   lam     :   
-%           -   
+% Output:   -   1am     :   Betragskleinster Eigenwert der Matrix A
+%           -   x       :   Zugehoeriger Eigenvektor zu lam
 %
 function [lam, x] = inv_power_method(A, sigma, x0, tol, max_iter)
 
@@ -23,7 +25,7 @@ function [lam, x] = inv_power_method(A, sigma, x0, tol, max_iter)
         %Abbruch, wenn |lambda(k) - lambda(k-1)| <= tol*norm(A,1)
         %D.h. differenz der lambdas ist kleiner als 
         if(abs(lam - lambda_old) <= tol*norm(A,1))
-            break;
+            return;
         endif
 
     endfor
