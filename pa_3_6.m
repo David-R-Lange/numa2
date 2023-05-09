@@ -29,7 +29,6 @@ try
 
     %Loesen des Problems von UB 3.3
 
-
     x0 = [0,2]';
 
     func_a = @(x) [ x(1).*x(2) ; x(1).+x(2)];
@@ -37,21 +36,24 @@ try
 
     [x, norm_dx, iter] = GGN_method(func_a, func_c, x0, tol, kmax)
 
+        
+    %Loesen des Problems von UB 3.4.a
 
-    # %Loesen des Problems von UB 3.4.a
+    %x0 = [0, 0]';
 
-
-    # x0 = 0; %TODO change
-
-    # GGN_method(@func_a, @func_c, x0, tol, kmax)
-
-
-    # %Loesen des Problems von UB 3.4.b
+    %[x, norm_dx, iter] = GGN_method(func_a, 0, x0, tol, kmax)
 
 
-    # x0 = [0.5, 1.5]';
+    %Loesen des Problems von UB 3.4.b
 
-    # GGN_method(@func_a, @func_c, x0, tol, kmax)
+    data = [0, 1.99; 0.125, 2.484; 0.25, 2.6614; 1.5, 2.866];
+    x0 = [0.75, 0.5, 1.5]';
+        
+    func_a = @(r,xp,yp) [ norm(data(1,1) - xp, 2) + norm(data(1,2) - yp, 2) - r; norm(data(2,1) - xp, 2) + norm(data(2,2) - yp, 2) - r; norm(data(3,1) - xp, 2) + norm(data(3,2) - yp, 2) - r; norm(data(4,1) - xp, 2) + norm(data(4,2) - yp, 2) - r ];
+    func_c = @(r,xp,yp) (xp.^2 + yp.^2 - 4);
+
+    [x, norm_dx, iter] = GGN_method(func_a, 0, x0, tol, kmax)        %Loesung von Teil (i)
+    [x, norm_dx, iter] = GGN_method(func_a, func_c, x0, tol, kmax)   %Loesung von Teil (ii)
 
 catch err
     fprintf("Fehler")
