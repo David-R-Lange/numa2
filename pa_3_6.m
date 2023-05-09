@@ -32,7 +32,7 @@ try
     x0 = [0,2]';
 
     func_a = @(x) [ x(1).*x(2) ; x(1).+x(2)];
-    func_c = @(x,y) (x.^2 + y.^2 - 4);
+    func_c = @(x) (x.^2 + x(2).^2 - 4);
 
     [x, norm_dx, iter] = GGN_method(func_a, func_c, x0, tol, kmax)
 
@@ -56,6 +56,6 @@ try
     [x, norm_dx, iter] = GGN_method(func_a, func_c, x0, tol, kmax)   %Loesung von Teil (ii)
 
 catch err
-    fprintf("Fehler")
+    fprintf("Fehler. Das Programm wird abgebrochen. \n")
 end_try_catch
 
