@@ -15,7 +15,6 @@
 %   5.  solve_LAP.m
 %   6.  GGN_method.m
 %
-%
 % Housekeeping
 clc;
 clear;
