@@ -20,5 +20,5 @@ for k = n:-1:1
     v = [1; QR(k+1:end,k)];
     % Passe Qx ab Zeile k an durch Multiplikation mit H_k=(I-tau_k v_k v_k')
     Qx(k:end,:) = Qx(k:end,:)-(tau(k)*v)*(v'*Qx(k:end,:));
-end
-end
+endfor
+endfunction

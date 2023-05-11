@@ -19,5 +19,5 @@ for k = 1:n
     v = [1; QR(k+1:end,k)];
     % Passe QTx ab Zeile k an durch Multiplikation mit H_k=(I-tau_k v_k v_k')
     QTx(k:end,:) = QTx(k:end,:)-(tau(k)*v)*(v'*QTx(k:end,:));
-end
-end
+endfor
+endfunction

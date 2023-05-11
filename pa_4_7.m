@@ -34,6 +34,10 @@ fprintf('Loesung der Vektoriteration von Aufgabe c.i \n')
 fprintf('Loesung der Inversen Vektoriteration von Aufgabe c.i \n')
 [lam, x] = inv_power_method(A, sigma_1, x_1, tol, max_iter)
 
+% Interpretation:
+% Beste approx. der kleinsten / groessten EW, 
+% dank guten Startvektor und grossem sigma_1
+
 %Loesen des Problems (ii)
 
 fprintf("\n\n\n")
@@ -47,6 +51,9 @@ fprintf('Loesung der Vektoriteration von Aufgabe c.ii \n')
 fprintf('Loesung der Inversen Vektoriteration von Aufgabe c.ii \n')
 [lam, x] = inv_power_method(A, sigma_2, x_2, tol, max_iter)
 
+% Interpretation:
+% Beide Methoden liefern selben approx. EW mit zug. EV, da sigma_2 sehr klein
+
 %Loesen des Problems (iii)
 
 fprintf("\n\n\n")
@@ -59,3 +66,7 @@ fprintf('Loesung der Vektoriteration von Aufgabe c.iii \n')
 
 fprintf('Loesung der Inversen Vektoriteration von Aufgabe c.iii \n')
 [lam, x] = inv_power_method(A, sigma_3, x_3, tol, max_iter)
+
+% Interpretation
+% Durch Startvektor wird groesster EW nicht erkannt, aber dank groesseren sigma_3 
+% sind EW unterschiedlich
