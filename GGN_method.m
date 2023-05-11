@@ -24,11 +24,15 @@ function [x, norm_dx, iter] = GGN_method(Fa, Fc, x0, tol, kmax)
         endif
 
         %Evaluierung der Funktionen und derer Ableitung an der Stelle x^k
-        J_a = jacobian(Fa, x);
-        J_c = jacobian(Fc,x);
+        
+        [fa,Ja] = Fa(x);
+        [fc,Jc] = Fc(x);
 
         %Loesen des linearisierten Problems LAP(x^k) um x^k+1 auszurechnen
-        x = solve_LAP((J_a(x) + Fa(x)), x, (J_c(x) + F_c(x)), x);
+        
+        dx = solve_LAP(Ja, -fa, Jc, -fc);
+        
+        x = x + dx;
 
     endfor
 
