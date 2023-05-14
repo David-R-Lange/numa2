@@ -17,14 +17,11 @@ function [lam, x] = power_method(A, x0, tol, max_iter)
 
         y = A*x;
 
-        %Eigenvektorapproximation
-        x = y / norm(y, 2);
+        x = y / norm(y, 2); %Eigenvektorapproximation
+        
+        lambda_old = lam;   % Speichern des alten lambda fuer den Abbruch
 
-        % Speichern des alten lambda fuer den Abbruch
-        lambda_old = lam;
-
-        %Eigenwertapproximation
-        lam = x' * A * x;
+        lam = x' * A * x;   %Eigenwertapproximation
 
         %Abbruch, wenn |lambda(k) - lambda(k-1)| <= tol*norm(A,1)
         %D.h. differenz der lambdas ist kleiner als 

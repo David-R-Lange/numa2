@@ -20,6 +20,10 @@ clear;
 
 A = [4,1,1,1;0,2,0,0;0,0,6-3*i,0;0,0,0,42];
 
+% Beobachtung:
+% Die EW sind auf der Hauptdiagonalen, womit die meisten 
+% EV leicht zu erraten sind
+
 tol = 1e-5;
 max_iter = 50;
 
@@ -37,6 +41,11 @@ fprintf('Loesung der Inversen Vektoriteration von Aufgabe c.i \n')
 % Interpretation:
 % Beste approx. der kleinsten / groessten EW, 
 % dank guten Startvektor und grossem sigma_1
+% Analytische Werte:
+% EW:               EV: 
+%   lam(pow) = 42   (1/38,0,0,1)' ~= (0.026316,0,0,1)
+%   lam(ipow)= 2    (-1/2,1,0,0)'
+
 
 %Loesen des Problems (ii)
 
@@ -53,6 +62,11 @@ fprintf('Loesung der Inversen Vektoriteration von Aufgabe c.ii \n')
 
 % Interpretation:
 % Beide Methoden liefern selben approx. EW mit zug. EV, da sigma_2 sehr klein
+% Analytische Werte:
+% EW:               EV: 
+%  lam(pow) = 6+3i ((2+3i)/13,0,1,0)' ~= (0.15385-0.23077i,0,1,0)'
+%  lam(ipow)= 6+3i ((2+3i)/13,0,1,0)' ~= (0.15385-0.23077i,0,1,0)'
+
 
 %Loesen des Problems (iii)
 
@@ -70,3 +84,7 @@ fprintf('Loesung der Inversen Vektoriteration von Aufgabe c.iii \n')
 % Interpretation
 % Durch Startvektor wird groesster EW nicht erkannt, aber dank groesseren sigma_3 
 % sind EW unterschiedlich
+% Analytische Werte:
+% EW:             EV: 
+%   lam(pow) = 4  (1,0,0,0)'
+%   lam(ipow)= 2  (-1/2,1,0,0)'
