@@ -9,33 +9,23 @@
 %           -   x       :   Zugehoeriger Eigenvektor zu lam
 %
 function [lam, x] = inv_power_method(A, sigma, x0, tol, max_iter)
-
     x = x0;
     lam = 0;
-
     n = size(A,1);
 
     for k = 1:max_iter
 
-        # [QR, tau] = qr_Householder(A-sigma*eye(n,n));
-
-        # y = mult_QT(QR, tau, x);
-
         y = (A-sigma*eye(n,n))/x';
 
-        %Eigenvektorapproximation
-        x = y / norm(y, 2);
+        x = y / norm(y, 2);     %Eigenvektorapproximation
 
-        % Speichern des alten lambda fuer den Abbruch
-        lambda_old = lam;
+        lambda_old = lam;       % Speichern des alten lambda fuer den Abbruch
 
-        %Eigenwertapproximation
-        lam = x' * A * x;
+        lam = x' * A * x;       %Eigenwertapproximation
 
         %Abbruch, wenn |lambda(k) - lambda(k-1)| <= tol*norm(A,1)
         if(abs(lam - lambda_old) <= tol*norm(A,1))
             return;
         endif
-
     endfor
 endfunction

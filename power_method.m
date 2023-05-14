@@ -9,7 +9,6 @@
 %           -   x       :   Zugehoeriger Eigenvektor zu lam
 %
 function [lam, x] = power_method(A, x0, tol, max_iter)
-
     x = x0;
     lam = 0;
 
@@ -24,10 +23,8 @@ function [lam, x] = power_method(A, x0, tol, max_iter)
         lam = x' * A * x;   %Eigenwertapproximation
 
         %Abbruch, wenn |lambda(k) - lambda(k-1)| <= tol*norm(A,1)
-        %D.h. differenz der lambdas ist kleiner als 
         if(abs(lam - lambda_old) <= tol*norm(A,1))
             return;
         endif
-
     endfor
 endfunction
