@@ -15,19 +15,17 @@ function [lam, x] = inv_power_method(A, sigma, x0, tol, max_iter)
 
     for k = 1:max_iter
 
-        # y = (A-sigma*eye(n,n))/x';
+        [L,U] = lu(A-sigma*eye(n,n));   %LU decomp. zum loesen der LGS
 
-        [L,U] = lu(A-sigma*eye(n,n));
+        z = trisolve(1,L,x);            %Vorwaertssub.
 
-        z = trisolve(1,L,x);
+        y = trisolve(0,U,z);            %Rueckwaertssub.
 
-        y = trisolve(0,U,z);
+        x = y / norm(y, 2);             %Eigenvektorapproximation
 
-        x = y / norm(y, 2);     %Eigenvektorapproximation
+        lambda_old = lam;               % Speichern des alten lambda fuer den Abbruch
 
-        lambda_old = lam;       % Speichern des alten lambda fuer den Abbruch
-
-        lam = x' * A * x;       %Eigenwertapproximation
+        lam = x' * A * x;               %Eigenwertapproximation
 
         %Abbruch, wenn |lambda(k) - lambda(k-1)| <= tol*norm(A,1)
         if(abs(lam - lambda_old) <= tol*norm(A,1))
