@@ -5,7 +5,7 @@
 %   Output: A   :   Überschriebene und Faktorisierte mxn Matrix
 %           tau :   Koeffizienten Vektor zum bilden der Matrix Q
 
-function [A, tau] = qr_Householder(A)
+function [A, tau] = qr_householder(A)
   
   [m,n] = size(A);
   

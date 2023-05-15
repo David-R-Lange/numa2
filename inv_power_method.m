@@ -1,11 +1,11 @@
-%%Funktion zum berechnen des betragkleinsten Eigenwertes und zug. Eigenvektor
+%%Funktion zum berechnen des kleinstwertigen Eigenwertes und zug. Eigenvektor welches am naehsten bei sigma ist
 %
 % Input:    -   A       :   nxn Matrix 
 %           -   x0      :   Startvektor x(0)
 %           -   tol     :   Fehlertoleranz und Abbruchkriterium
 %           -   max_iter:   Maximale # an Iterationen
 %
-% Output:   -   1am     :   Betragskleinster Eigenwert der Matrix A
+% Output:   -   1am     :   kleinstwertiges, sigma-naehester EW von A
 %           -   x       :   Zugehoeriger Eigenvektor zu lam
 %
 function [lam, x] = inv_power_method(A, sigma, x0, tol, max_iter)
@@ -15,7 +15,13 @@ function [lam, x] = inv_power_method(A, sigma, x0, tol, max_iter)
 
     for k = 1:max_iter
 
-        y = (A-sigma*eye(n,n))/x';
+        # y = (A-sigma*eye(n,n))/x';
+
+        [L,U] = lu(A-sigma*eye(n,n));
+
+        z = trisolve(1,L,x);
+
+        y = trisolve(0,U,z);
 
         x = y / norm(y, 2);     %Eigenvektorapproximation
 
