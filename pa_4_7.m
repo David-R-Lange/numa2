@@ -10,7 +10,7 @@
 % Liste der eingesendeten Dateien:
 %   1.  power_method.m
 %   2.  inv_power_method.m
-%
+%   3.  trisolve.m
 %
 % Housekeeping
 clc;
