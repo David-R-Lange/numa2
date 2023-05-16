@@ -39,10 +39,11 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 #
 # Antwort:  Es faellt auf, dass die EW Approx. von A sehr viele Schritte (3007) durchlaeuft, waehrend B kaum 20 Schritte 
 #           braucht. 
-#           WORAN? TODO
-#           Dass Programm koennte man schneller abbrechen lassen, indem wir den alten lambdawert speichern und diesen gegen
-#           den neu berechneten Wert vergleichen und wenn die absolute Differenz dieser beiden Werte kleiner als unsere tol 
-#           waere, koennte man die approx. abbrechen lassen.
+#           Dies kann daran liegen, dass A einen doppelten EW hat, naemlich 1. Dadurch ist die Konvergenz des leichten QR-Verfahrens
+#           nicht mehr linear und dies erklaert unseren viele Schritte. 
+#           Man koennte Shifts in das Verfahren einbauen, womit die Konvergenz des Systems schneller erreicht wird. Andernfalls
+#           koennte man auch vorher die Matrizen auf die Obere Hessenberg Form bringen, dies wuerde die Konvergenz auch erhoehen,
+#           aber eine Berechnung im Vorhinein bedeuten.
 
 [lambda3, iter] = qr_algorithm(C, tol, max_iter)
 
