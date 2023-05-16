@@ -21,7 +21,7 @@ tic;
 % Anfang des Skriptes
 
 tol = 1e-8;
-max_iter = 50;
+max_iter = 10000;
 
 A = [4,3,0 ; 3,4,0 ; 0,28/15,1];
 
@@ -29,16 +29,16 @@ B = [1,-1,-1 ; 4,6,3 ; -4,-4,-1];
 
 C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 
-[lambda1, iter] = qr_algorithm(A, tol, max_iter)
+ [lambda1, iter] = qr_algorithm(A, tol, max_iter)
 
 [lambda2, iter] = qr_algorithm(B, tol, max_iter)
 
 [lambda3, iter] = qr_algorithm(C, tol, max_iter)
 
-lambda = eig(A)
+x = eig(A)
 
-lambda = eig(B)
+x = eig(B)
 
-lambda = eig(C)
+x = eig(C)
 
 toc
