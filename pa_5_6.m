@@ -16,7 +16,7 @@
 % Housekeeping
 clc;
 clear;
-tic;
+tic;    # start clock
 
 % Anfang des Skriptes
 
@@ -37,7 +37,11 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 #           Woran koennten die unterschiedlichen Iterationszahlen liegen? Wie koennte das
 #           Programm verbessert werden?
 #
-# Antwort:  TODO 
+# Antwort:  Es faellt auf, dass die EW Approx. von A sehr viele Schritte durchlaeuft, waehrend B keine 100 Schritte braucht
+#           WORAN? TODO
+#           Dass Programm koennte man schneller abbrechen lassen, indem wir den alten lambdawert speichern und diesen gegen
+#           den neu berechneten Wert vergleichen und wenn die absolute Differenz dieser beiden Werte kleiner als unsere tol 
+#           waere, koennte man die approx. abbrechen lassen.
 
 [lambda3, iter] = qr_algorithm(C, tol, max_iter)
 
@@ -53,7 +57,7 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 #           Weshalb koennen wir kein anderes Ergebnis erwarten?
 #
 # Antwort:  D wird nur eine Iteration durchgehen, da laut Abbruchkriterium die untere
-#           dreiecksmatrix (quasi die v-vektoren von Q aus der QR-Zerlegung), diese kleiner
-#           als tol*norm(A,inf) sein wird. Denn die sind gleich 0
+#           dreiecksmatrix (quasi die v-vektoren von Q aus der QR-Zerlegung), verglichen wird 
+#           mit < tol*norm(A,inf). Dies wird immer der Fall sein, da tril(A,1) = 0.
 
-toc
+toc #end clock

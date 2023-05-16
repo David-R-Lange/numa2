@@ -1,7 +1,7 @@
 %%Funktion zum berechnen aller Eigenwerte mit dem QR-Verfahren
 %
 % Input:    -   A       :   nxn Matrix
-%           -   tol     :   Fehlertoleranz und Abbruchkriterium
+%           -   tol     :   Fehlertoleranz
 %           -   max_iter:   Maximale # an Iterationen
 %
 % Output:   -   1ambda  :   Approx. Eigenwerte der Matrix A
