@@ -33,12 +33,27 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 
 [lambda2, iter] = qr_algorithm(B, tol, max_iter)
 
+# Frage:    Vergleichen Sie die Iterationszahlen fuer die Matrizen A und B, was faellt auf?
+#           Woran koennten die unterschiedlichen Iterationszahlen liegen? Wie koennte das
+#           Programm verbessert werden?
+#
+# Antwort:  TODO 
+
 [lambda3, iter] = qr_algorithm(C, tol, max_iter)
 
-x = eig(A)
+# Frage:    Funktioniert das Verfahren auch fuer die komplexwertige Matrix C /elementof /C^nxn ?
+#
+# Antwort:  Da die Diagonalelemente schon die EW der Matrix sind, passiert mit denen in der Ausfuehrung
+#           auch gar nichts. Somit funktioniert das Verfahren nicht fuer diese Matrix, in dem Sinne, dass
+#           es unnoetig ist.
 
-x = eig(B)
+[lambda4, iter] = qr_algorithm(C', tol, max_iter)
 
-x = eig(C)
+# Frage:    Wie viele Iterationen werden fuer D = C' benoetigt?
+#           Weshalb koennen wir kein anderes Ergebnis erwarten?
+#
+# Antwort:  D wird nur eine Iteration durchgehen, da laut Abbruchkriterium die untere
+#           dreiecksmatrix (quasi die v-vektoren von Q aus der QR-Zerlegung), diese kleiner
+#           als tol*norm(A,inf) sein wird. Denn die sind gleich 0
 
 toc
