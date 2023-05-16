@@ -29,7 +29,7 @@ B = [1,-1,-1 ; 4,6,3 ; -4,-4,-1];
 
 C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 
- [lambda1, iter] = qr_algorithm(A, tol, max_iter)
+[lambda1, iter] = qr_algorithm(A, tol, max_iter)
 
 [lambda2, iter] = qr_algorithm(B, tol, max_iter)
 
