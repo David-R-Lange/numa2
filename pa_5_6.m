@@ -25,6 +25,8 @@ max_iter = 10000;
 
 A = [4,3,0 ; 3,4,0 ; 0,28/15,1];
 
+sigma = A(3,3); #A(n,n) als shift fuer qr_algorithm_shift
+
 B = [1,-1,-1 ; 4,6,3 ; -4,-4,-1];
 
 C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
@@ -61,5 +63,7 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 # Antwort:  D wird nur eine Iteration durchgehen, da laut Abbruchkriterium die untere
 #           dreiecksmatrix (quasi die v-vektoren von Q aus der QR-Zerlegung), verglichen wird 
 #           mit < tol*norm(A,inf). Dies wird immer der Fall sein, da tril(A,1) = 0.
+
+[lambda5, iter] = qr_algorithm_shift(A, sigma, tol, max_iter)   # zum Vergleich 
 
 toc #end clock
