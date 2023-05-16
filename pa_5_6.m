@@ -37,7 +37,8 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 #           Woran koennten die unterschiedlichen Iterationszahlen liegen? Wie koennte das
 #           Programm verbessert werden?
 #
-# Antwort:  Es faellt auf, dass die EW Approx. von A sehr viele Schritte durchlaeuft, waehrend B keine 100 Schritte braucht
+# Antwort:  Es faellt auf, dass die EW Approx. von A sehr viele Schritte (3007) durchlaeuft, waehrend B kaum 20 Schritte 
+#           braucht. 
 #           WORAN? TODO
 #           Dass Programm koennte man schneller abbrechen lassen, indem wir den alten lambdawert speichern und diesen gegen
 #           den neu berechneten Wert vergleichen und wenn die absolute Differenz dieser beiden Werte kleiner als unsere tol 

@@ -18,11 +18,15 @@ function [lambda, iter] = qr_algorithm(A, tol, max_iter)
 
     for iter=1:max_iter
 
-        [QR, tau] = qr_householder(A);      # QR-Zerlegung von A
+        [QR, tau] = qr_householder(A);              # QR-Zerlegung von A
+        
+        for i = 1:n 
+        
+          A(i,:) = mult_QT(QR,tau, triu(QR)(i,:)'); # Implizites Berechnen von A = (Q'R')' durch mult_QT 
+        
+        endfor
 
-        A = mult_QT(QR,tau, triu(QR)')';    # Obere Hessenberg Matrix von A erstellen
-
-        lambda = diag(A);                  # Abspeichern der Diagonalwerte von QR, welche EW Approx. von A sind
+        lambda = diag(A);                           # Abspeichern der Diagonalwerte von QR, welche EW Approx. von A sind
                 
         if(max(abs(tril(A, -1))) < tol*norm(A,inf)) # Abbruch, wenn 'Q' kleiner als tol*norm(A, inf) ist
           return;
