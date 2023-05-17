@@ -25,15 +25,13 @@ max_iter = 10000;
 
 A = [4,3,0 ; 3,4,0 ; 0,28/15,1];
 
-sigma = A(3,3); #A(n,n) als shift fuer qr_algorithm_shift
-
 B = [1,-1,-1 ; 4,6,3 ; -4,-4,-1];
 
 C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 
-[lambda1, iter] = qr_algorithm(A, tol, max_iter)
+[lambda1, iter] = qr_algorithm(A, 0, tol, max_iter)
 
-[lambda2, iter] = qr_algorithm(B, tol, max_iter)
+[lambda2, iter] = qr_algorithm(B, 0, tol, max_iter)
 
 # Frage:    Vergleichen Sie die Iterationszahlen fuer die Matrizen A und B, was faellt auf?
 #           Woran koennten die unterschiedlichen Iterationszahlen liegen? Wie koennte das
@@ -47,7 +45,7 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 #           koennte man auch vorher die Matrizen auf die Obere Hessenberg Form bringen, dies wuerde die Konvergenz auch erhoehen,
 #           aber eine Berechnung im Vorhinein bedeuten.
 
-[lambda3, iter] = qr_algorithm(C, tol, max_iter)
+[lambda3, iter] = qr_algorithm(C, 0, tol, max_iter)
 
 # Frage:    Funktioniert das Verfahren auch fuer die komplexwertige Matrix C /elementof /C^nxn ?
 #
@@ -55,7 +53,7 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 #           auch gar nichts. Somit funktioniert das Verfahren nicht fuer diese Matrix, in dem Sinne, dass
 #           es unnoetig ist.
 
-[lambda4, iter] = qr_algorithm(C', tol, max_iter)
+[lambda4, iter] = qr_algorithm(C', 0, tol, max_iter)
 
 # Frage:    Wie viele Iterationen werden fuer D = C' benoetigt?
 #           Weshalb koennen wir kein anderes Ergebnis erwarten?
@@ -64,6 +62,6 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 #           dreiecksmatrix (quasi die v-vektoren von Q aus der QR-Zerlegung), verglichen wird 
 #           mit < tol*norm(A,inf). Dies wird immer der Fall sein, da tril(A,1) = 0.
 
-[lambda5, iter] = qr_algorithm_shift(A, sigma, tol, max_iter)   # zum Vergleich 
+[lambda5, iter] = qr_algorithm(A, 1, tol, max_iter)   # zum Vergleich 
 
 toc #end clock

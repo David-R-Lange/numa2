@@ -1,13 +1,14 @@
 %%Funktion zum berechnen aller Eigenwerte mit dem QR-Verfahren
 %
 % Input:    -   A       :   nxn Matrix
+%           -   sigma   :   boolean, true wenn die shift methode verwendet werden soll
 %           -   tol     :   Fehlertoleranz
 %           -   max_iter:   Maximale # an Iterationen
 %
 % Output:   -   1ambda  :   Approx. Eigenwerte der Matrix A
 %           -   iter    :   Tatsaechliche # der Iterationen
 %
-function [lambda, iter] = qr_algorithm(A, tol, max_iter)
+function [lambda, iter] = qr_algorithm(A, sigma, tol, max_iter)
 
     [m,n] = size(A);
 
@@ -16,15 +17,23 @@ function [lambda, iter] = qr_algorithm(A, tol, max_iter)
         return;
     endif
 
+    sigma_k = 0;
+
     for iter=1:max_iter
 
-        [QR, tau] = qr_householder(A);              # QR-Zerlegung von A
+        if(sigma)
+          sigma_k = A(n,n)*eye(n,n);                # Anwenden des shifts mit A(n,n) = sigma
+        endif
+
+        [QR, tau] = qr_householder(A-sigma_k);      # QR-Zerlegung von A
         
         for i = 1:n 
         
           A(i,:) = mult_QT(QR,tau, triu(QR)(i,:)'); # Implizites Berechnen von A = (Q'R')' durch mult_QT 
         
         endfor
+
+        A += sigma_k;                               # A mit shift-matrix addieren
 
         lambda = diag(A);                           # Abspeichern der Diagonalwerte von QR, welche EW Approx. von A sind
                 
