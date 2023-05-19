@@ -62,6 +62,7 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 #           dreiecksmatrix (quasi die v-vektoren von Q aus der QR-Zerlegung), verglichen wird 
 #           mit < tol*norm(A,inf). Dies wird immer der Fall sein, da tril(A,1) = 0.
 
-[lambda5, iter] = qr_algorithm(A, 1, tol, max_iter)   # zum Vergleich 
+[lambda5, iter] = qr_algorithm(A, 1, tol, max_iter)   # zum Vergleich wird hier das "QR-Verfahren mit Shift" genutzt
+                                                      # um die Aufgabe viel schneller zu loesen. (Siehe Frage 1)
 
 toc #end clock

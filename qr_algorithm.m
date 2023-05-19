@@ -17,6 +17,11 @@ function [lambda, iter] = qr_algorithm(A, sigma, tol, max_iter)
         return;
     endif
 
+    if (sigma ~= 0 && sigma ~= 1)
+      disp("Fehler! Der Eingabewert sigma soll ein boolean sein. Werte nur true/1 oder false/0")
+      return;
+    endif
+
     sigma_k = 0;
 
     for iter=1:max_iter
