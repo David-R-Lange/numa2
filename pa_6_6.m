@@ -27,7 +27,7 @@ tic;    # start clock
 
 matrix = importdata('matrix.mat');          # Laden der Bilddatei
 
-nu_matrix_mat = [3, 10, 20];                # Def. der gegebene nu's
+nu = [3, 10, 20];                # Def. der gegebene nu's
 
 
 ####  Kompression des Bildes mit der Methode svd_approx ####
@@ -38,10 +38,10 @@ subplot(2,2,1), imshow(matrix)
   xlabel (sprintf("Keine Kompression"));
 
 for i = 1:3
-  C = svd_approx(matrix, nu_matrix_mat(i));
+  C = svd_approx(matrix, nu(i));
 
   subplot(2,2,i+1), imshow(C)
-    xlabel (sprintf("Kompression mit Rang(A) = r = %d", nu_matrix_mat(i)));
+    xlabel (sprintf("Kompression mit Rang(A) = r = %d", nu(i)));
 endfor
 
 disp("Erstes Bild fertig")
