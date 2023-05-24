@@ -10,14 +10,15 @@ function C = svd_approx(A, nu)
     [m, n] = size(A);
 
     if(nu > min(m,n))
-        disp("\nFehler. Der Rang der TruncSVD ist groesser als der Rang von der gegebenen Matrix.\n")
-        return;
+        error("\nFehler. Der Rang der TruncSVD ist groesser als der Rang von der gegebenen Matrix.\n")
     endif
+
+    C = zeros(m,n);
 
     [U, S, V] = svd(A);
 
     for j = 1:nu
-        C = U(:,1:j) * S(1:j,1:j) * V(:,1:j)';
+        C += U(:,j) * S(j,j) * V(:,j)';
     endfor
 
 endfunction
