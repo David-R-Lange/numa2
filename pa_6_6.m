@@ -44,8 +44,6 @@ for i = 1:3
     xlabel (sprintf("Kompression mit Rang(A) = r = %d", nu(i)));
 endfor
 
-disp("Erstes Bild fertig")
-
 
 
 ##  Naechste Bildatei ####
@@ -68,9 +66,6 @@ for i = 1:3
     xlabel (sprintf("Kompression mit Rang(A) = r = %d", nu(i)));
 endfor
 
-    
-disp("Zweites Bild fertig")
-
 
 
 ####  Naechste Bildatei ####
@@ -91,9 +86,6 @@ for i = 1:3
     xlabel (sprintf("Kompression mit Rang(A) = r = %d", nu(i)));
 endfor
 
-    
-disp("Drittes Bild fertig")
-
 
 
 #### Naechste Bildatei  ####
@@ -113,8 +105,5 @@ for i = 1:3
   subplot(2,2,i+1), imshow(C)
     xlabel (sprintf("Kompression mit Rang(A) = r = %d", nu(i)));
 endfor
-
-    
-disp("Letztes Bild fertig")
 
 toc
