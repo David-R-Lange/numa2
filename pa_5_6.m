@@ -51,9 +51,7 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 
 # Frage:    Funktioniert das Verfahren auch fuer die komplexwertige Matrix C /elementof /C^nxn ?
 #
-# Antwort:  Da die Diagonalelemente schon die EW der Matrix sind, passiert mit denen in der Ausfuehrung
-#           auch gar nichts. Somit funktioniert das Verfahren nicht fuer diese Matrix, in dem Sinne, dass
-#           es unnoetig ist.
+# Antwort:  Ja.
 
 [lambda4, iter] = qr_algorithm(C', 0, tol, max_iter)
 
@@ -62,7 +60,7 @@ C = [4,0,0,0 ; 1,2,0,0 ; 1,0,6-3*i,0 ; 1,0,0,42];
 #
 # Antwort:  D wird nur eine Iteration durchgehen, da laut Abbruchkriterium die untere
 #           dreiecksmatrix (quasi die v-vektoren von Q aus der QR-Zerlegung), verglichen wird 
-#           mit < tol*norm(A,inf). Dies wird immer der Fall sein, da tril(A,1) = 0.
+#           mit < tol*norm(A,inf). Dies wird immer der Fall sein, da tril(A,-1) = 0.
 
 [lambda5, iter] = qr_algorithm(A, 1, tol, max_iter)   # zum Vergleich wird hier das "QR-Verfahren mit Shift" genutzt
                                                       # um die Aufgabe viel schneller zu loesen. (Siehe Frage 1)
