@@ -18,7 +18,7 @@ function C = svd_approx(A, nu)
     [U, S, V] = svd(A);                 # Interne SVD nutzen um U, S, V zu bekommen
 
     for j = 1:nu
-      C += S(j,j) * U(:,j) * V(:,j)';   # Implizite Matrix-Mult mit U(:,j) = mx1, S(j,j) = 1x1, V(:,j)' = 1xm
+      C += S(j,j) * U(:,j) * V(:,j)';   # Implizite Matrix-Mult mit  S(j,j) = 1x1, U(:,j) = mx1, V(:,j)' = 1xm
     endfor
 
 endfunction
