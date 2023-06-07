@@ -19,7 +19,7 @@ tic;    # start clock
 
 % Anfang des Skriptes
 
-##############  Modellierung des Ebola-Virus Ausbruchs in Zaire von 1976    ####################
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Modellierung des Ebola-Virus Ausbruchs in Zaire von 1976    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 delta = 0.73;
 beta = 0.27;
@@ -29,15 +29,19 @@ N_0 = 125000;
 
 I_0 = 5;
 
+y_0 =  [I_0, 0, 0, 0];
+
 t_0 = 0;
 
 t_max = 30;
 
+t = linspace(t_0, t_max);
+
 alpha = 3.15e-5;
 
-[t, y] = lsode(@(t, y) ode_SIRD(t, y, alpha, beta, gamma, delta), [t_0, t_max], y_0);
+y = lsode(@(y, t) ode_SIRD(y, t, [alpha, beta, gamma, delta]), y_0, t)
 
-
+return;
 
 alpha_q = 8.7e-6;
 
