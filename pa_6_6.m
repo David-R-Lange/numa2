@@ -5,7 +5,7 @@
 %   3.  Kilian Hartmann, 10031802
 %
 % Programmiersprache: Octave
-% Version:            version 6.4.0-2
+% Version:            version 7.3.0
 %
 % Liste der eingesendeten Dateien:
 %   1.  svd_approx.m
@@ -37,13 +37,20 @@ figure (1);
 subplot(2,2,1), imshow(matrix)
   xlabel (sprintf("Keine Kompression"));
 
-for i = 1:3
-  C = svd_approx(matrix, nu(i));
+C = svd_approx(matrix, nu(1));
 
-  subplot(2,2,i+1), imshow(C)
-    xlabel (sprintf("Kompression mit Rang(A) = r = %d", nu(i)));
-endfor
+subplot(2,2,2), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(1)));
 
+C = svd_approx(matrix, nu(2));
+
+subplot(2,2,3), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(2)));
+
+C = svd_approx(matrix, nu(3));
+
+subplot(2,2,4), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(3)));
 
 
 ##  Naechste Bildatei ####
@@ -59,12 +66,21 @@ figure (2);
 subplot(2,2,1), imshow(matrix)
   xlabel (sprintf("Keine Kompression"));
 
-for i = 1:3
-  C = svd_approx(matrix, nu(i));
+C = svd_approx(matrix, nu(1));
 
-  subplot(2,2,i+1), imshow(C)
-    xlabel (sprintf("Kompression mit Rang(A) = r = %d", nu(i)));
-endfor
+subplot(2,2,2), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(1)));
+
+C = svd_approx(matrix, nu(2));
+
+subplot(2,2,3), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(2)));
+
+C = svd_approx(matrix, nu(3));
+
+subplot(2,2,4), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(3)));
+
 
 
 
@@ -79,13 +95,20 @@ figure(3);
 subplot(2,2,1), imshow(matrix)
   xlabel (sprintf("Keine Kompression"));
 
-for i = 1:3
-  C = svd_approx(matrix, nu(i));
+C = svd_approx(matrix, nu(1));
 
-  subplot(2,2,i+1), imshow(C)
-    xlabel (sprintf("Kompression mit Rang(A) = r = %d", nu(i)));
-endfor
+subplot(2,2,2), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(1)));
 
+C = svd_approx(matrix, nu(2));
+
+subplot(2,2,3), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(2)));
+
+C = svd_approx(matrix, nu(3));
+
+subplot(2,2,4), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(3)));
 
 
 #### Naechste Bildatei  ####
@@ -99,11 +122,19 @@ figure(4);
 subplot(2,2,1), imshow(matrix)
   xlabel (sprintf("Keine Kompression"));
 
-for i = 1:3
-  C = svd_approx(matrix, nu(i));
+C = svd_approx(matrix, nu(1));
 
-  subplot(2,2,i+1), imshow(C)
-    xlabel (sprintf("Kompression mit Rang(A) = r = %d", nu(i)));
-endfor
+subplot(2,2,2), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(1)));
+
+C = svd_approx(matrix, nu(2));
+
+subplot(2,2,3), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(2)));
+
+C = svd_approx(matrix, nu(3));
+
+subplot(2,2,4), imshow(C)
+xlabel(sprintf("Kompression mit Rang(A) = r = %d", nu(3)));
 
 toc
