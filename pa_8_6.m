@@ -22,7 +22,7 @@ tic;    % start clock
 %% Definition der notwendigen Werte/Funktionen
 
 % Definition der Funktion
-f = @(t, y) y^2;
+f = @(t, y) y.^2;
 
 % Definition des Startwertes
 y_0 = -4;

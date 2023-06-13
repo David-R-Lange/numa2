@@ -7,13 +7,13 @@
 % Output:   -   vals		:	Matrix
 %
 function vals = explizit_euler(f, zerl, y_0)
-    [~,n] = size(zerl);
+    [n,m] = size(zerl);
 
-    vals = zeros(n,n);
-    vals(:,1) = y_0;
+    vals = zeros(n,m);
+    vals(1,1) = y_0;
 
-    for i = 1:n-1
-        vals(:,i+1) =  vals(i,i) + (zerl(i+1)-zerl(i)) * f(zerl(i), vals(i,i));
+    for i = 1:m-1
+        vals(:,i+1) =  vals(:,i) + (zerl(i+1)-zerl(i)) * f(zerl(i), vals(:,i));
     end
 
 end
