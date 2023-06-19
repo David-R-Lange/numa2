@@ -7,5 +7,10 @@
 % Output:   -   vals	:	nxn Matrix mit den Spalten als Loesungen vom AWP
 %
 function vals = runge_kutta(A, b, f, t0, tend, y0, n)
-
+  delta = t0;
+  vals = zeros(n,n);
+  vals1,:) = y0;
+  for i = 1:n
+      t = ti + tau(i,:);
+  end
 end

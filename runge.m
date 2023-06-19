@@ -13,10 +13,12 @@ function vals = runge(f, zerl, y_0)
     vals(1,1) = y_0;
 
     for i = 1:m-1
-        tau = zerl(i+1) - zerl(i);  % Definition von tau, damit Inkrementsfunktion besser lesbar
-        
-        vals(:,i+1) =  vals(:,i) + tau * (f(zerl(i) + tau * 0.5, vals(:,i)) +
-                           tau * 0.5 * f(zerl(i), vals(:,i))
-                        );
+        for j = 1:n
+            tau = zerl(j,i+1) - zerl(j,i);  % Definition von tau, damit Inkrementsfunktion besser lesbar
+            y_delt = vals(j,i);             
+
+            vals(j,i+1) = y_delt + tau * f(zerl(j,i+1)*0.5, y_delt +
+            tau * 0.5 * f(zerl(j,i), y_delt));
+        end
     end
 end

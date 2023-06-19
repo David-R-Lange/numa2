@@ -18,7 +18,7 @@ function dydt = ode_SIRD(t, y, parameter)
   R = y(3);
   D = y(4);
   
-  dS = -parameter(1) * S * I + parameter(3)*R;
+  dS = -parameter(1) * S * I + parameter(3) * R;
 
   dI = parameter(1) * S * I - parameter(2) * I - parameter(4) * I;
 
