@@ -7,15 +7,13 @@
 % Output:   -   vals	:   nxm Matrix mit den Spalten als Loesungen vom AWP
 %
 function vals = explizit_euler(f, zerl, y_0)
-    [n,m] = size(zerl);
-
+    n = length(y_0);
+    m = length(zerl);
     vals = zeros(n,m);
-    vals(1,1) = y_0;
+    vals(:,1) = y_0;
 
-    for i = 1:m-1
-        for j = 1:n
-            tau = zerl(j,i+1) - zerl(j,i);
-            vals(j,i+1) =  vals(j,i) + tau * f(zerl(i), vals(j,i));
-        end
+    for j = 1:m-1
+        tau = zerl(j+1) - zerl(j);
 
+        vals(:,j+1) =  vals(:,j) + tau * f(zerl(j), vals(:,j));
     end
