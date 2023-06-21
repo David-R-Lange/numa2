@@ -16,5 +16,38 @@ clear all;
 close all;
 tic;    % start clock
 
-% Anfang des Skripte
+%%%%%%%%%%%%%%  Deklaration und Initialisierung der genutzten Variablen %%%%%%%%%%
+
+% Def. der Funktion dydt als autonomisierte ODE
+
+f = @(t,y) [y(2); (1-y(1)^2) * y(2) - y(1)];
+
+% Def. des Anfangswertes
+
+y0 = [2,0];
+
+% Def. des Butcher-Tableus
+
+A = [0,0,0,0,0 ; 0.5,0,0,0,0 ; 0,0.5,0,0,0 ; 0,0,1,0,0 ; 1/6,1/3,1/3,1/6,0];
+
+% Def. von b
+b = [1/6,1/3,1/3,1/6,0]';
+
+% Def. der Anfangszeit
+t0 = 0;
+
+% Def. der Endzeit
+tend = 20;
+
+% Def. der Schritte
+n = 80;
+
+%%%%%%%%%%%%% Berechnung der ODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+vals_rkv = runge_kutta(A,b,f,t0,tend,y0,n)
+
+%%%%%%%%%%%% Plotten der Berechneten Werte %%%%%%%%%%%%%%%%%%
+
+plot([t0,tend], vals_rkv, "--")
+legend;
 
