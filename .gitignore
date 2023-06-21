@@ -1,0 +1,5 @@
+# ignore all saved jpegs
+*.jpg
+
+# igoring workspace file
+octave-workspace
