@@ -46,6 +46,16 @@ n = 80;
 
 vals_rkv = runge_kutta(A,b,f,t0,tend,y0,n)
 
+%%%%%%%%%%%% Testing before continue %%%%%%%%%%%%%%%%%%%%%%%
+
+t_adapt = importdata('t_adapt.mat');
+
+y_adapt = importdata('y_adapt.mat');
+
+assert(isEqual(t_adapt,t));
+
+assert(isEqual(y_adapt,vals_rkv));
+
 %%%%%%%%%%%% Plotten der Berechneten Werte %%%%%%%%%%%%%%%%%%
 
 plot([t0,tend], vals_rkv, "--")
