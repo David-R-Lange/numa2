@@ -14,25 +14,31 @@ function vals = runge_kutta(A, b, f, t0, tend, y0, n)
    
     % Def. der Dimension von y0
     m = length(y0);
-
-    % Def. der Zeitinkr.fkt
-    delta = t0;
+    s = length(b);
     
     % Deklaration der notwendigen Matrizen und Vektoren
-    vals = zeros(m,m);
-    k = zeros(n);
-    c = zeros(n);
+    vals = zeros(m,n);
+    k = zeros(m,n);
+    kschritt = zeros(m,n);
+    c = zeros(n,1);
    
     % Initialisierung
     vals(:,1) = y0;
-    k = f(t0, vals);
+    tau = 1/n;
 
+    % Def. der Zeitinkr.fkt
+    t = t0;
+    
     % RKV-Methode
     for i = 1:n-1
-        y_delt = vals(:,i);
-        c(i) = A(:,i);                               % Def. von c(i) nach Lemma 9.8
-        k(i) = f(delta+c(i)*1, y_delt + A(:,i)*k(:)); %Def. von k(i) nach Skript 9.4 RKV
-        vals(:,i+1) = y_delt + b(i)*k(i);
-        delta = delta + 1;
+        for l = 1:s-1
+            t = t + c(i)*tau;
+            for j = 1:l-1
+                c(i) += A(l,j);   % Def. von c(i) nach Lemma 9.8
+                kschritt(:,i) += A(l,j) * k(:,j);
+            end
+            k(:,i) = f(t, vals(:,i) + tau*kschritt(i));      % Def. von ki nach Skript 9.4 RKV
+            vals(:,i+1) = vals(:,i) + b(l)*k(:,i);
+        end
     end
 end

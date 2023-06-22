@@ -20,7 +20,7 @@ tic;    % start clock
 
 % Def. der Funktion dydt als autonomisierte ODE
 
-f = @(t,y) [y(2); (1-y(1)^2) * y(2) - y(1)];
+f = @(t,y) [y(2), (1-y(1)^2) * y(2) - y(1)];
 
 % Def. des Anfangswertes
 
@@ -31,7 +31,7 @@ y0 = [2,0];
 A = [0,0,0,0,0 ; 0.5,0,0,0,0 ; 0,0.5,0,0,0 ; 0,0,1,0,0 ; 1/6,1/3,1/3,1/6,0];
 
 % Def. von b
-b = [1/6,1/3,1/3,1/6,0]';
+b = [1/6,1/3,1/3,1/6,0];
 
 % Def. der Anfangszeit
 t0 = 0;
@@ -44,7 +44,7 @@ n = 80;
 
 %%%%%%%%%%%%% Berechnung der ODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-vals_rkv = runge_kutta(A,b,f,t0,tend,y0,n)
+vals_rkv = runge_kutta(A,b,f,t0,tend,y0,n);
 
 %%%%%%%%%%%% Testing before continue %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -52,12 +52,16 @@ t_adapt = importdata('t_adapt.mat');
 
 y_adapt = importdata('y_adapt.mat');
 
-assert(isEqual(t_adapt,t));
-
-assert(isEqual(y_adapt,vals_rkv));
 
 %%%%%%%%%%%% Plotten der Berechneten Werte %%%%%%%%%%%%%%%%%%
+subplot(2,1,1), 
+plot(t_adapt, y_adapt)
+legend
+title("Berechnungen der Van der Pol Gleichung  mit der adaptiven RK3(4)-Methode")
 
-plot([t0,tend], vals_rkv, "--")
-legend;
-
+t = linspace(t0,tend,n);
+subplot(2,1,2),
+plot(t, vals_rkv)
+legend
+title("Berechnung der Van der Pol Gleichung mit der allgemeinen expl. RKV")
+toc
