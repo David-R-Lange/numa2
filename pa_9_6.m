@@ -42,26 +42,23 @@ tend = 20;
 % Def. der Schritte
 n = 80;
 
-%%%%%%%%%%%%% Berechnung der ODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% Berechnung der ODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 vals_rkv = runge_kutta(A,b,f,t0,tend,y0,n);
 
-%%%%%%%%%%%% Testing before continue %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% Einspeisen der gegebenen Werte der adapt. Berechnung  %%%%%%%%%%%%%%%%%%%%%%%
 
 t_adapt = importdata('t_adapt.mat');
 
 y_adapt = importdata('y_adapt.mat');
 
 
-%%%%%%%%%%%% Plotten der Berechneten Werte %%%%%%%%%%%%%%%%%%
-subplot(2,1,1), 
-plot(t_adapt, y_adapt)
-legend
-title("Berechnungen der Van der Pol Gleichung  mit der adaptiven RK3(4)-Methode")
+%%%%%%%%%%%% Plotten der Berechneten Werte %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+plot(t_adapt, y_adapt(1,:))
 
-t = linspace(t0,tend,n);
-subplot(2,1,2),
-plot(t, vals_rkv)
-legend
-title("Berechnung der Van der Pol Gleichung mit der allgemeinen expl. RKV")
+hold on;
+t = linspace(t0,tend,n+1);
+plot(t, vals_rkv(1,:))
+legend("RK3(4)", "allg. expl. RKV");
+
 toc
