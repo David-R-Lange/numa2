@@ -1,15 +1,15 @@
 %%Funktion zum Berechnen einer approximativen Loesung einer ODE mit dem allgemeinen expliziten s-stufigen Runge-Kutta-Verfahren
 %
-% Input:    -   A       :   Butcher-Tabluea-Matrix
-%           -   b       :   b-Vektor n dim
+% Input:    -   A       :   Butcher-tableau als Matrix
+%           -   b       :   Loesungsvektor des Butcher-tableau
 %           -   f		:	Gegebene Funktion des AWP
 %           -   t0  	:   Anfang der Zeitaufnahme
 %           -   tend    :   Ende der Zeitaufnahme
 %	        -	y_0		:	Anfangswert
 %           -   n       :   # der Schritte
 %
-% Output:   -   vals	:	nxn Matrix mit den Spalten als Loesungen vom AWP
-%
+% Output:   -   vals	:	Loesungsmatrix
+% 
 function vals = runge_kutta(A, b, f, t0, tend, y0, n)
 
     % Def. der Dimension von y0
@@ -20,11 +20,11 @@ function vals = runge_kutta(A, b, f, t0, tend, y0, n)
     vals = zeros(m,n+1);
     k = zeros(m,s);
     bk = zeros(m,n+1);
-    c = sum(A,2);
 
     % Initialisierung
     vals(:,1) = y0;
     tau = (tend-t0)/n;
+    c = sum(A,2);
 
     % Def. der Zeitinkr.fkt
     t = t0;
