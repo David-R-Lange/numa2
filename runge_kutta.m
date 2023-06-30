@@ -32,9 +32,9 @@ function vals = runge_kutta(A, b, f, t0, tend, y0, n)
     % RKV-Methode
     for i = 1:n
         for j = 1:s
-            k(:,j) = f(t, vals(:,i) + tau * sum(k*A));      % Def. von k_i nach Skript 9.4 RKV
+            k(:,j) = f(t, vals(:,i) + tau * sum(k.*A(j,:),2));      % Def. von k_i nach Skript 9.4 RKV
             bk(:,i) += b(j) * k(:,j);
-            t = t + c*tau;
+            t = t + c(j)*tau;
         end
         vals(:,i+1) = vals(:,i) + tau * bk(:,i);
     end
