@@ -1,6 +1,6 @@
-%%Funktion zum Berechnen der Fixpunktiteration in jedem Schritt
+%%Funktion zum Berechnen des Fixpunktes eines gegebenen Wertes
 %
-% Input:    -   Phi     :   
+% Input:    -   Phi     :   Fixpunktfunktion
 %           -   y0      :   Anfangswert
 %           -   eps     :   Abbruchkriterium
 %           -   kmax    :   Abbruchkriterium
@@ -9,9 +9,11 @@
 %           -   y       :   Loesung der Fixpunktgleichung
 % 
 function [iter, y] = banach_iter(Phi, y0, eps, kmax)
-
+    y = y0;
     for iter = 1:kmax
-
+        y_old = y;
+        y = Phi(y);
+        if(abs(y_old - y) <= eps)
+            break;
     end
-
 end
