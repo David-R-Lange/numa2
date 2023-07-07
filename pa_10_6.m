@@ -1,8 +1,8 @@
-% Programmieraufgabe 10.6
+%% Programmieraufgabe 10.6
 % Liste der Gruppenmitglieder (Name, Matrikelnummer)
-%   1.  Rene-David Brüggemann, 10040204
-%   2.  Jean-Luc Brüggemann, 10048805
-%   3.  Kilian Hartmann, 10031802
+%   1.  Kilian Hartmann, 10031802
+%   2.  Rene-David Brüggemann, 10040204
+%   3.  Jean-Luc Brüggemann, 10048805
 %
 % Programmiersprache: Octave
 % Version:            version 7.3.0
@@ -43,7 +43,7 @@ for i = 1:m
     delta = linspace(t0,tend,h+1);
 
     subplot(3,3,i); 
-    plot(delta, vals(1,:));
+    plot(delta, vals);
     title(sprintf("Graph des klassischen RKV mit Schrittweite %d", h));
 end
 
@@ -51,3 +51,4 @@ end
 subplot(3,3,[7,9]);
 plot(t,vals(:,1));
 title(sprintf("Graph des klassischen RKV mit ode45"));
+toc
