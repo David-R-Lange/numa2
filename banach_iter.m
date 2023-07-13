@@ -10,10 +10,12 @@
 % 
 function [iter, y] = banach_iter(Phi, y0, eps, kmax)
     y = y0;
+    phi_y = Phi(y);
     for iter = 1:kmax
-        y_old = y;
-        y = Phi(y);
-        if(abs(y_old - y) <= eps)
+	y = phi_y;
+        phi_y = Phi(y);
+        if(abs(phi_y - y) <= eps)
             break;
     end
+    y = phi_y;
 end
